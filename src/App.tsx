@@ -25,12 +25,11 @@ export function Board() {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       const filter = squares.filter(square => square != null);
-
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      const haveWinner = squares[a] && squares[a] === squares[b] && squares[a] === squares[c];
+      
+      if (haveWinner) {
         return squares[a];
-      }
-
-      if (filter.length === 9) {
+      } else if (filter.length === 9 && !haveWinner) {
         return "velha";
       }
     }
